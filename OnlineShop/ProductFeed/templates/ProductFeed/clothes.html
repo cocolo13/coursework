@@ -1,0 +1,58 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" >
+    <title>OnlineShop</title>
+    
+    <link rel="stylesheet" href="{% static 'ProductFeed/css/clothes.css' %}">
+</head>
+<body>
+    <div class="top">
+        <a href="{% url 'feed'%}"><img src="{% static 'ProductFeed/images/logo.png' %}" class="logo"></a>
+        <h1>
+            <a href="{% url 'feed'%}" class="logo-title">
+                OnlineShop
+            </a>
+        </h1>
+    </div>
+    <div class="button-container">
+        <a href="{% url 'clothes'%}" class="cat-button">Одежда</a>
+        <a href="{% url 'shoes'%}" class="cat-button">Обувь</a>
+        <a href="{% url 'accessories'%}" class="cat-button">Аксессуары</a>
+        <div class="search-button-container">
+            <input placeholder="Поиск" class="search-input">
+            <button class="lupa-button">
+                <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
+            </button>
+        </div>
+        <button class="enter-button">Войти</button>
+        <button class="trash-button"></button>
+    </div>
+    <div class="settings-clothes-container">
+        <h2>Одежда</h2>
+        <div class="settings-clothes-inside-container">
+            <button class="dropdown">Категории</button>
+            <button class="dropdown">Цена</button> 
+            <button class="dropdown">Цвет</button>
+            <button class="dropdown">Сезон</button>
+        </div>
+         
+    </div>
+
+    <div class="clothes-container">
+        {% for cl in all_clothes %}
+            <div class="product">
+                <a href="#"><img class="image-photo" src="{{cl.photo.url}}"></a>
+                <p>{{cl.brand}}</p>
+                <p>{{cl.title}}</p>
+                <p>{{cl.cost}}₽</p>
+                <button class="add-in-trash">Добавить в корзину</button>
+            </div>
+        {% endfor %}
+    </div>
+</body>
+</html>
+
+
+
