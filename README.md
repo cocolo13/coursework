@@ -8,5 +8,4 @@
 * Django
 * HTML
 * CSS
-* JS
 * MySQL
