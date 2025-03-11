@@ -27,8 +27,14 @@
                 <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
             </button>
         </div>
-        <button class="enter-button">Войти</button>
-        <button class="trash-button"></button>
+        {% if request.user.is_authenticated%}
+        <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
+        <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
+
+        {% else %}
+        <button class="enter-button"><a class="login-link" href="#">Войти</a></button>
+        <button class="register-button"><a class="login-link" href="#">Регистрация</a></button>
+        {% endif%}
     </div>
     <div class="settings-clothes-container">
         <h2>Аксессуары</h2>
@@ -42,11 +48,14 @@
     <div class="clothes-container">
         {% for ac in all_accessories %}
             <div class="product">
-                <a href="#"><img class="image-photo" src="{{ac.photo.url}}"></a>
+                <a href="{{ac.get_absolute_url}}"><img class="image-photo" src="{{ac.photo.url}}"></a>
                 <p>{{ac.brand}}</p>
                 <p>{{ac.title}}</p>
                 <p>{{ac.cost}}₽</p>
-                <button class="add-in-trash">Добавить в корзину</button>
+                {% if ac.is_premium%}
+                <p><b class="premium">Premium</b></p>
+                {% endif %}
+                <!-- <button class="add-in-trash">Добавить в корзину</button> -->
             </div>
         {% endfor %}
     </div>

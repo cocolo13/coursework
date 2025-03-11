@@ -1,0 +1,75 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" >
+    <title>Достижения</title>
+    
+    <link rel="stylesheet" href="{% static 'UserProfile/css/achievements.css' %}">
+</head>
+<body>
+    <div class="top">
+        <a href="{% url 'feed'%}"><img src="{% static 'ProductFeed/images/logo.png' %}" class="logo"></a>
+        <h1>
+            <a href="{% url 'feed'%}" class="logo-title">
+                OnlineShop
+            </a>
+        </h1>
+    </div>
+    
+    <div class="button-container">
+        <a href="{% url 'clothes'%}" class="cat-button">Одежда</a>
+        <a href="{% url 'shoes'%}" class="cat-button">Обувь</a>
+        <a href="{% url 'accessories'%}" class="cat-button">Аксессуары</a>
+        <a href="" class="cat-button">Мужчинам</a>
+        <a href="" class="cat-button">Женщинам</a>
+        <div class="search-button-container">
+            <input placeholder="Поиск" class="search-input">
+            <button class="lupa-button">
+                <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
+            </button>
+        </div>
+        <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
+        <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
+    </div>
+    <div class="main-container">
+        <div class="points-container">
+            <a class="point-links" href="{% url 'myData'%}">Мои данные</a>
+            <a class="point-links" href="{% url 'trash'%}">Корзина</a>
+            <a class="point-links" href="{% url 'like'%}">Избранное</a>
+            <a class="point-links" href="{% url 'achievements'%}">Достижения</a>
+            <a class="point-links" href="{% url 'profile'%}">Заказы</a>
+            <a class="point-links" href="{% url 'reviews'%}">Отзывы</a>
+        </div>
+        
+        <div class="inside-container">
+            <h3>Мои достижения</h3>
+            <div class="achiv-container">
+                {% for ach in achievements %}
+                <div class="image-label-container">
+                    <a href=""><img class="img-achiv" src="{{ach.photo.url}}"></a>
+                    <div class="text-check-container"></div>
+                    <p class="description-label">{{ach.description}}</p>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <h3>Другие достижения</h3>
+    <div class="other-ach-container">
+        {% for other_ach in other_achievements %}
+        <div class="other-image-label-container">
+            <a href=""><img class="img-achiv" src="{{other_ach.photo.url}}"></a>
+            <div class="text-check-container"></div>
+            <p class="description-label">{{other_ach.description}}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+    
+    
+</body>
+</html>
+
+
+

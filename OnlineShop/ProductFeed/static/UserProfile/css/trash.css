@@ -7,7 +7,7 @@ body{
 
 h1 {
     color: black;
-    font-family: Bookman, URW Bookman L, serif;
+    font-family: Optima, sans-serif;
     margin-top: 30px;
     text-align: center;
     font-size: 4rem;
@@ -75,6 +75,22 @@ h2 {
     margin-top: 50px;
     font-size: 3rem;
 }
+
+h3 {
+    color: black;
+    font-family: Optima, sans-serif;
+    font-size: 2rem;
+    margin-left: 100px;
+    margin-top: 50px;
+    margin-top: 30px;
+}
+
+h4 {
+    color: black;
+    font-family: Optima, sans-serif;
+    font-size: 1.7rem;
+}
+
 .enter-button {
     background-color: #edf6f9;
     height: 40px;
@@ -84,6 +100,9 @@ h2 {
     color: black;
 
 }
+.enter-button:hover {
+    opacity: 0.8;
+  }
 
 .register-button {
     background-color: #edf6f9;
@@ -156,21 +175,11 @@ h2 {
 
 
 .image-photo {
-    height: 360px;
-}
-.product {
-    text-align: center; 
-    margin: 20px;
-    padding: 10px; 
-    border: 1px solid #ddd; 
-    border-radius: 5px; 
-    background-color: white;
+    width: 230px;
+    height: 340px;
 }
 
-.add-in-trash {
-    border-radius: 80px;
-    background-color: #b0c4b1;
-}
+
 
 .search-button-container{
     display: flex;
@@ -187,7 +196,60 @@ h2 {
     opacity: 0.2;
 }
 
+.points-container {
+    margin-top: 50px;
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-size: 1.7rem;
+}
+.point-links {
+    color: inherit;
+    text-decoration: none;
+}
+
+.point-links:hover {
+    color: gray;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    gap: 250px;
+}
+
+.trash-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.add-in-trash {
+    border-radius: 80px;
+    background-color: #b0c4b1;
+}
+
+.product {
+    text-align: center; 
+    margin: 20px;
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    background-color: white;
+}
+
+.add-in-trash2 {
+    border-radius: 10px;
+    background-color: #b0c4b1;
+    height: 30px;
+}
+
 p {
     font-size: 1.2rem;
 }
 
+.text-container {
+    display: flex;
+    flex-direction: column;
+    column-gap: 0px
+}

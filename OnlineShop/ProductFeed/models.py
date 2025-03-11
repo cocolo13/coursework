@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 # Create your models here.
@@ -12,14 +13,19 @@ class Clothes(models.Model):
     color = models.CharField(max_length=255, blank=True, null=True)
     by_count = models.IntegerField(default=0)
     is_premium = models.BooleanField(null=True)
-    count_sizes = models.JSONField(default={"XS": 0,
-                                            "S": 0,
-                                            "M": 0,
-                                            "L": 0,
-                                            "XL": 0,
-                                            "XXL": 0})
     gender = models.CharField(max_length=6, default="Male")
     count_in_stock = models.IntegerField(default=10)
+    size = models.ManyToManyField('Sizes')
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('product', kwargs={'product_id': self.pk})
+
+
+class Sizes(models.Model):
+    size = models.CharField(max_length=10, null=True)
+
+    def __str__(self):
+        return self.size

@@ -27,8 +27,14 @@
                 <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
             </button>
         </div>
-        <button class="enter-button">Войти</button>
-        <button class="trash-button"></button>
+        {% if request.user.is_authenticated%}
+        <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
+        <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
+
+        {% else %}
+        <button class="enter-button"><a class="login-link" href="#">Войти</a></button>
+        <button class="register-button"><a class="login-link" href="#">Регистрация</a></button>
+        {% endif%}
     </div>
     <div class="settings-clothes-container">
         <h2>Обувь</h2>
@@ -42,11 +48,14 @@
     <div class="clothes-container">
         {% for sh in all_shoes %}
             <div class="product">
-                <a href="#"><img class="image-photo" src="{{sh.photo.url}}"></a>
+                <a href="{{sh.get_absolute_url}}"><img class="image-photo" src="{{sh.photo.url}}"></a>
                 <p>{{sh.brand}}</p>
                 <p>{{sh.title}}</p>
                 <p>{{sh.cost}}₽</p>
-                <button class="add-in-trash">Добавить в корзину</button>
+                {% if sh.is_premium%}
+                <p><b class="premium">Premium</b></p>
+                {% endif %}
+                <!-- <button class="add-in-trash">Добавить в корзину</button> -->
             </div>
         {% endfor %}
     </div>

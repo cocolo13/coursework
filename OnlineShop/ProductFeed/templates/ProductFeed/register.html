@@ -1,0 +1,25 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="{% static 'ProductFeed/css/register.css' %}">
+</head>
+<body>
+  <a href="{% url 'feed'%}"><img src="{% static 'ProductFeed/images/logo.png' %}" class="logo"></a>
+  <div class="form-container">
+    <h1>Регистрация</h1>
+    <form method="post">
+      {% csrf_token %}
+      {% for f in form%}
+      <div class="input-element-container">
+        <div class="input">{{f}}</div>
+      </div>
+      {% endfor%}
+      <button type="submit" class="reg-btn">Регистрация</button>
+    </form>
+  </div>
+  
+</body>
+</html>
