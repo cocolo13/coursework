@@ -75,6 +75,27 @@ h2 {
     margin-top: 50px;
     font-size: 3rem;
 }
+
+h3 {
+    color: black;
+    font-family: Optima, sans-serif;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 200px;
+    margin-top: 50px;
+    font-size: 2rem;
+}
+
+h4 {
+    color: black;
+    font-family: Optima, sans-serif;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 200px;
+    margin-top: 50px;
+    font-size: 1.7rem;
+}
+
 .enter-button {
     background-color: #edf6f9;
     height: 40px;
@@ -84,6 +105,9 @@ h2 {
     color: black;
 
 }
+.enter-button:hover {
+    opacity: 0.8;
+  }
 
 .register-button {
     background-color: #edf6f9;
@@ -144,32 +168,8 @@ h2 {
     max-width: 1440px;
 }
 
-.clothes-container {
-    gap: 20px; 
-    display: flex;
-    /* flex-wrap: wrap;  */
-    /* justify-content: space-between; */
-    margin-left: 200px;
-    row-gap: 30px;
-    overflow: auto;
-}
-
-
 .image-photo {
-    height: 360px;
-}
-.product {
-    text-align: center; 
-    margin: 20px;
-    padding: 10px; 
-    border: 1px solid #ddd; 
-    border-radius: 5px; 
-    background-color: white;
-}
-
-.add-in-trash {
-    border-radius: 80px;
-    background-color: #b0c4b1;
+    height: 470px;
 }
 
 .search-button-container{
@@ -187,7 +187,116 @@ h2 {
     opacity: 0.2;
 }
 
+/* .add-in-trash {
+    border-radius: 80px;
+    background-color: #b0c4b1;
+} */
+
+.product {
+    text-align: center; 
+    margin: 20px;
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    background-color: white;
+}
+
+.clothes-container {
+    gap: 100px; 
+    display: flex;
+    /* flex-wrap: wrap;  */
+    /* justify-content: space-between; */
+    margin-left: 270px;
+    margin-top: 30px;
+
+    overflow: auto;
+}
+
+.title {
+
+    font-size: 2.2rem;
+    margin-bottom: 5px;
+    margin-top: 27px;
+}
+
+.brand {
+    font-size: 1.7rem;
+    color: gray;
+    margin-top: 10px;
+}
+
+.title-brand-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.cost {
+    font-size: 1.5rem;
+    margin-top: -10px;
+}
+
+.color {
+    font-size: 1.5rem;
+    margin-top: -10px;
+    margin-bottom: 0px;
+}
+
+.brand-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.brand-link:hover {
+    color: black;
+}
+
+.add-in-trash {
+    margin-top: 100;
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 300px;
+    font-size: large;
+    border-radius: 20px;
+    border-color: black;
+}
+
+.clothes-container2 {
+    gap: 20px; 
+    display: flex;
+    /* flex-wrap: wrap;  */
+    /* justify-content: space-between; */
+    margin-left: 200px;
+    row-gap: 30px;
+    overflow: auto;
+}
+
+
+.image-photo2 {
+    height: 340px;
+}
+.add-in-trash2 {
+    border-radius: 10px;
+    background-color: #b0c4b1;
+    height: 30px;
+}
+
+.product2 {
+    text-align: center; 
+    margin: 20px;
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    background-color: white;
+}
+
 p {
     font-size: 1.2rem;
 }
 
+.size-container {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+}

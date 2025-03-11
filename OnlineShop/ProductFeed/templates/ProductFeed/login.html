@@ -1,0 +1,26 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Log in</title>
+    <link rel="stylesheet" href="{% static 'ProductFeed/css/login.css' %}">
+</head>
+<body>
+  <a href="{% url 'feed'%}"><img src="{% static 'ProductFeed/images/logo.png' %}" class="logo"></a>
+  <div class="form-container">
+    <h1>Вход</h1>
+    <form method="post">
+      {% csrf_token %}
+      {% for f in form%}
+      <div class="input-element-container">
+        <div class="input">{{f}}</div>
+      </div>
+      {% endfor%}
+      <button type="submit" class="reg-btn">Войти</button>
+      <p>Нет аккаунта? <a class="register-link" href="{% url 'register'%}">Зарегистрируйтесь</a></p>
+    </form>
+  </div>
+
+</body>
+</html>

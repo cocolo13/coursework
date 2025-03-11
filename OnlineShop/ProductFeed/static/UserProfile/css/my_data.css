@@ -1,0 +1,362 @@
+
+body{
+    background-color: white;
+    width: 1440px;
+    
+}
+
+h1 {
+    color: black;
+    font-family: Optima, sans-serif;
+    margin-top: 30px;
+    text-align: center;
+    font-size: 4rem;
+}
+.logo {
+    height: 150px;
+    width: 150px;
+    border-radius: 115px;
+    margin-left: 50px;
+    margin-top: 20px;
+}
+
+.logo {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+}
+
+.logo:hover {
+-moz-box-shadow: 0 0 10px #000;
+-webkit-box-shadow: 0 0 10px #000;
+box-shadow:0 0 10px #000; 
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+.logo {
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+    }
+.logo:hover {
+-webkit-transform: scale(1.1);
+-moz-transform: scale(1.1);
+-o-transform: scale(1.1);
+transform: scale(1.1);
+-webkit-transition: all 0.5s ease;
+-moz-transition: all 0.5s ease;
+transition: all 0.5s ease;
+}
+
+.logo-title {
+    text-decoration: none;
+    color: black;
+}
+
+.logo-title:hover {
+    color: gray;
+   }
+
+.top {
+    display: flex;
+    justify-content: left;
+    gap: 460px; 
+    overflow: hidden;
+}
+
+h2 {
+    color: black;
+    font-family: Optima, sans-serif;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 200px;
+    margin-top: 50px;
+    font-size: 3rem;
+}
+
+h3 {
+    color: black;
+    font-family: Optima, sans-serif;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 200px;
+    margin-top: 50px;
+    font-size: 2rem;
+    margin-bottom: -1px;
+}
+
+h4 {
+    color: black;
+    font-family: Optima, sans-serif;
+    margin-top: 30px;
+    text-align: left;
+    margin-left: 200px;
+    margin-top: 50px;
+    font-size: 1.7rem;
+}
+
+.enter-button {
+    background-color: #edf6f9;
+    height: 40px;
+    width: 100px;
+    border-radius: 15px;
+    font-size: large;
+    color: black;
+
+}
+.enter-button:hover {
+    opacity: 0.8;
+  }
+
+.register-button {
+    background-color: #edf6f9;
+    height: 40px;
+    width: 150px;
+    border-radius: 15px;
+    font-size: large;
+    color: black;
+}
+
+.enter-button:hover {
+    opacity: 0.8;
+}
+
+.register-button:hover {
+    opacity: 0.8;
+}
+
+.login-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.search-input {
+    background-color: #edf6f9;
+    border-radius: 15px;
+    border-color: black;
+    height: 40px;
+}
+
+.trash-button {
+    background-image: url('../images/trash.png');
+    height: 40px;
+    width: 40px;
+    border-radius: 115px;
+    background-size: cover;
+}
+
+.trash-button:hover {
+    opacity: 0.8;
+  }
+
+.cat-button {
+    color: #495057;
+    text-decoration: none;
+    font-size: x-large;
+}
+
+.cat-button:hover {
+    color: black;
+   }
+
+.button-container {
+    display: flex;
+    justify-content: right;
+    gap: 20px; 
+    overflow: hidden;
+    max-width: 1440px;
+}
+
+.clothes-container {
+    gap: 20px; 
+    display: flex;
+    /* flex-wrap: wrap;  */
+    /* justify-content: space-between; */
+    margin-left: 200px;
+    row-gap: 30px;
+    overflow: auto;
+}
+
+
+.image-photo {
+    width: 230px;
+    height: 340px;
+}
+
+
+
+.search-button-container{
+    display: flex;
+    align-items: center;
+    gap: 0px;
+}
+
+.lupa-button {
+    background: transparent;
+    border: none;
+}
+
+.lupa-button:hover {
+    opacity: 0.2;
+}
+
+.points-container {
+    margin-top: 50px;
+    margin-left: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    font-size: 1.7rem;
+}
+.point-links {
+    color: inherit;
+    text-decoration: none;
+}
+
+.point-links:hover {
+    color: gray;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: row;
+    gap: 250px;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.add-in-trash {
+    border-radius: 80px;
+    background-color: #b0c4b1;
+}
+
+.product {
+    text-align: center; 
+    margin: 20px;
+    padding: 10px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    background-color: white;
+}
+
+.add-in-trash2 {
+    border-radius: 10px;
+    background-color: #b0c4b1;
+    height: 30px;
+}
+
+p {
+    font-size: 1.5rem;
+}
+
+.name-container {
+    width: 200px; /* Задайте желаемую ширину поля ввода */
+    margin-bottom: 10px; /* Добавьте отступ снизу */
+  }
+  
+.name-container label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 16px; /* Задайте размер шрифта заголовка */
+  }
+  
+.name-container input[type="text"] {
+    width: 100%;
+    padding: 0;
+    border: none;
+    border-bottom: 2px solid black; /* Нижняя линия */
+    outline: none; /* Убирает обводку при фокусировке */
+    font-size: 20px; /* Задайте размер шрифта текста в поле ввода */
+}
+
+.radio-group {
+  margin-bottom: 20px; /* Add space between the whole group and the next element */
+}
+
+.radio-container {
+  display: block; /* Each option on a new line */
+  margin-bottom: 25px; /* Increased space between radio button options */
+  position: relative; /* For positioning the custom radio button */
+  padding-left: 35px; /* Space for the custom radio button */
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Hide the default radio button */
+.radio-container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+  border-radius: 50%; /* Make it round */
+}
+
+/* When the radio button is checked, add a blue background */
+.radio-container input:checked ~ .checkmark {
+  background-color: #fff; /*White background when checked*/
+  border: 1px solid black; /*Add border around the circle*/
+}
+
+/* Create the indicator (the dot inside the circle) */
+.checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the indicator (dot) when checked */
+.radio-container input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the indicator (dot) */
+.radio-container .checkmark:after {
+  top: 5px;
+  left: 5px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: black;
+}
+
+.gender {
+    margin-bottom: 20px;
+    margin-top: -2px;
+}
+
+.save-link {
+    color: inherit;
+    text-decoration: none;
+}
+
+.save-btn {
+    margin-top: -10px;
+    height: 45px;
+    width: 120px;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+}
+
+.save-btn :hover{
+    opacity: 0.5;
+}

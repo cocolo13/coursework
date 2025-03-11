@@ -1,5 +1,8 @@
 media
 db.sqlite3
-../.venv
 ProductFeed/migrations
-/__pycache__/
+**/__.DS_Store__/
+../.idea/misc.xml
+../.venv/
+**/__pycache__/
+/migrations/
