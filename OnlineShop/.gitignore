@@ -2,3 +2,4 @@ media
 db.sqlite3
 ../.venv
 ProductFeed/migrations
+/__pycache__/
