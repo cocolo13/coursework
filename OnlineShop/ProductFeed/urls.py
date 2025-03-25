@@ -18,4 +18,5 @@ urlpatterns = [
     path("profile/reviews", show_page_reviews, name="reviews"),
     path("profile/myData", show_page_my_data, name="myData"),
     path("product/<int:product_id>/", show_product_info, name="product"),
+    path("brand/<int:brand_id>/", show_brand, name="brand")
 ]

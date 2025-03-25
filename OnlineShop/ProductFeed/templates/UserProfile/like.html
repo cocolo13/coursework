@@ -54,7 +54,9 @@
         {% for obj in all_title %}
             <div class="product">
                 <a href="{{obj.get_absolute_url}}"><img class="image-photo" src="{{obj.photo.url}}"></a>
-                <p>{{obj.brand}}</p>
+                {% for b in obj.brand.all %}
+                <p>{{ b }}</p>
+                {% endfor %}
                 <p>{{obj.title}}</p>
                 <p>{{obj.cost}}₽</p>
                 <div class="button-heat-add">

@@ -68,3 +68,6 @@ class Brands(models.Model):
 
     def __str__(self):
         return self.brand
+
+    def get_absolute_url(self):
+        return reverse('brand', kwargs={'brand_id': self.pk})
