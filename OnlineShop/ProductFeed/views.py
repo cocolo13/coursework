@@ -10,8 +10,6 @@ from UserProfile.models import UserProfile, Achievements
 from django.contrib.auth.models import User
 
 
-# Create your views here.
-
 def show_base_page(request):
     all_clothes = Clothes.objects.all().order_by('-by_count')
     only_clothes = Clothes.objects.filter(category="Одежда").order_by('?')[:30]
@@ -79,11 +77,35 @@ def logout_user(request):
     return redirect('login')
 
 
+def rec_feed(feed_id):
+    feed = Clothes.objects.get(pk=feed_id)
+    g = feed.gender
+    all_feed = Clothes.objects.exclude(pk=feed_id).filter(gender=g)
+    return all_feed
+
+
 def show_product_info(request, product_id):
     current_product = Clothes.objects.filter(pk=product_id)
     all_clothes = Clothes.objects.all().order_by('-by_count')
-    sizes = Clothes.objects.get(pk=product_id).size.all()  # Получаем все размеры товар
+    sizes = Clothes.objects.get(pk=product_id).size.all()
+    rec = rec_feed(product_id)
     return render(request, "ProductFeed/product.html",
                   {"product": current_product,
                    "all_title": all_clothes,
-                   "sizes": sizes})
+                   "sizes": sizes,
+                   "rec_feed": rec})
+
+
+def show_male_feeds(request):
+    male_feeds = Clothes.objects.filter(gender="Male").order_by('?')
+    return render(request, "ProductFeed/MaleFeeds.html",
+                  {"feeds": male_feeds})
+
+
+def show_female_feeds(request):
+    female_feeds = Clothes.objects.filter(gender="Female").order_by('?')
+    return render(request, "ProductFeed/FemaleFeeds.html",
+                  {"feeds": female_feeds})
+
+# def show_brand(request, brand_id):
+#     current_brand =

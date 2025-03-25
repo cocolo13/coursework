@@ -16,6 +16,10 @@ class Clothes(models.Model):
     gender = models.CharField(max_length=6, default="Male")
     count_in_stock = models.IntegerField(default=10)
     size = models.ManyToManyField('Sizes')
+    season = models.ManyToManyField('Seasons')
+    style = models.ManyToManyField("Styles")
+    subcategory = models.ManyToManyField("Subcategories")
+    country = models.ManyToManyField("Countries")
 
     def __str__(self):
         return self.title
@@ -29,3 +33,38 @@ class Sizes(models.Model):
 
     def __str__(self):
         return self.size
+
+
+class Seasons(models.Model):
+    season = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.season
+
+
+class Styles(models.Model):
+    style = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.style
+
+
+class Subcategories(models.Model):
+    subcategory = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.subcategory
+
+
+class Countries(models.Model):
+    country = models.CharField(max_length=100, null=True)
+
+    def __str__(self):
+        return self.country
+
+
+class Brands(models.Model):
+    brand = models.CharField(max_length=255, null=True)
+
+    def __str__(self):
+        return self.brand

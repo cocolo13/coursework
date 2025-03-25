@@ -53,7 +53,7 @@
     </div>
     <h2>Рекомендуем</h2>
     <div class="clothes-container2">
-        {% for obj in all_title %}
+        {% for obj in rec_feed %}
             <div class="product2">
                 <a href="{{obj.get_absolute_url}}"><img class="image-photo2" src="{{obj.photo.url}}"></a>
                 <p>{{obj.brand}}</p>
