@@ -10,4 +10,5 @@ admin.site.register(Seasons)
 admin.site.register(Styles)
 admin.site.register(Subcategories)
 admin.site.register(Countries)
+admin.site.register(Brands)
 # Register your models here.

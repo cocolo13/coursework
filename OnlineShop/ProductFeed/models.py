@@ -9,7 +9,6 @@ class Clothes(models.Model):
     cost = models.IntegerField()
     category = models.CharField(max_length=255)
     photo = models.ImageField(upload_to="photos/%Y/%m/%d/")
-    brand = models.CharField(max_length=255, null=True)
     color = models.CharField(max_length=255, blank=True, null=True)
     by_count = models.IntegerField(default=0)
     is_premium = models.BooleanField(null=True)
@@ -20,6 +19,7 @@ class Clothes(models.Model):
     style = models.ManyToManyField("Styles")
     subcategory = models.ManyToManyField("Subcategories")
     country = models.ManyToManyField("Countries")
+    brand = models.ManyToManyField("Brands")
 
     def __str__(self):
         return self.title
