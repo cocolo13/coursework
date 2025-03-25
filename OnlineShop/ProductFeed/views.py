@@ -8,6 +8,7 @@ from .forms import RegisterUserForm, LoginUserForm
 from .models import Clothes, Sizes, Brands
 from UserProfile.models import UserProfile, Achievements
 from django.contrib.auth.models import User
+from ML.views import preprocessing
 
 
 def show_base_page(request):
@@ -96,7 +97,8 @@ def show_product_info(request, product_id):
     current_product = Clothes.objects.filter(pk=product_id)
     all_clothes = Clothes.objects.all().order_by('-by_count')
     sizes = Clothes.objects.get(pk=product_id).size.all()
-    rec = rec_feed(product_id)
+    rec_pk = preprocessing(feed_id=product_id)
+    rec = Clothes.objects.filter(pk__in=rec_pk)
     brand = Clothes.objects.get(pk=product_id).brand.all()[0]
     return render(request, "ProductFeed/product.html",
                   {"product": current_product,
