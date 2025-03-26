@@ -9,18 +9,21 @@ from sklearn.preprocessing import LabelEncoder
 class MyRecSystem:
     def __init__(self):
         self.data = None
+        self.vector = None
 
     def fit(self, X):
         self.data = X
 
     def predict(self, index_obj):
         assert (self.data is not None), "Сначала нужно вызвать метод fit"
-
+        for j in range(len(self.data)):
+            if self.data[j][3] == index_obj:
+                self.vector = self.data[j]
         all_obj = []
         for i in range(len(self.data)):
-            if i != index_obj:
-                cur_dist = self.cos_dist(self.data[index_obj], self.data[i])
-                all_obj.append([cur_dist, i])
+            if self.data[i][3] != index_obj:
+                cur_dist = self.cos_dist(np.delete(self.vector, 3), np.delete(self.data[i], 3))
+                all_obj.append([cur_dist, self.data[i][3]])
         all_obj.sort()
         return all_obj
 
@@ -31,9 +34,9 @@ class MyRecSystem:
 
 def create_data_frame(feed_id):
     cur_feed = Clothes.objects.get(pk=feed_id)
-    g = cur_feed.gender
-    all_feed = Clothes.objects.exclude(pk=feed_id).filter(gender=g)
-
+    gender = cur_feed.gender
+    not_needed_pks = Clothes.objects.exclude(gender=gender).values_list('pk', flat=True)
+    all_feed = Clothes.objects.all()
     all_fields = [field.name for field in Clothes._meta.get_fields(include_hidden=True)]
     all_fields.remove("title")
     all_fields.remove("photo")
@@ -44,6 +47,8 @@ def create_data_frame(feed_id):
     all_fields.remove("brand")
     all_fields.remove("country")
     all_fields.remove("Clothes_size+")
+    all_fields.remove("gender")
+    all_fields.remove("count_in_stock")
 
     all_seasons = [s.__str__() for s in Seasons.objects.all()]
     all_styles = [s.__str__() for s in Styles.objects.all()]
@@ -76,54 +81,23 @@ def create_data_frame(feed_id):
         new_df = pd.DataFrame([obj])
         df = pd.concat([df, new_df], ignore_index=True)
     df = df.drop(["Clothes_season+", "Clothes_style+"], axis=1)
-    df = df.set_index("id")
     df["cost"] = df["cost"].astype(float)
-    df["count_in_stock"] = df["count_in_stock"].astype(int)
     df["by_count"] = df["by_count"].astype(int)
+    for index, row in df.iterrows():
+        if row["id"] in not_needed_pks and row["id"] != feed_id:
+            df.drop(index, inplace=True)
     return df
 
 
 def preprocessing(feed_id):
     df = create_data_frame(feed_id)
-
-    # category_encoder = jb.load("category_encoder.joblib")
-    # clothes_brand = jb.load("Clothes_brand+_encoder.joblib")
-    # clothes_country = jb.load("Clothes_country+_encoder.joblib")
-    # clothes_subcategory = jb.load("Clothes_subcategory+_encoder.joblib")
-    # color_encoder = jb.load("color_encoder.joblib")
-    # gender_encoder = jb.load("gender_encoder.joblib")
-    # is_premium_encoder = jb.load("is_premium_encoder.joblib")
-
     for col in df.columns:
-        if df[col].dtype == "object":
+        if df[col].dtype == "object" and col != "id":
             encoder = LabelEncoder()
             encoder.fit(df[col])
-            jb.dump(encoder, f"{col}_encoder.joblib")
             df[col] = encoder.transform(df[col])
-
     model = MyRecSystem()
     model.fit(df.to_numpy())
-    # for col in df.columns:
-    #     if df[col].dtype == "object":
-    #         encoder = None
-    #         if col == "Clothes_subcategory+":
-    #             encoder = clothes_subcategory
-    #         elif col == "Clothes_country+":
-    #             encoder = clothes_country
-    #         elif col == "Clothes_brand+":
-    #             encoder = clothes_brand
-    #         elif col == "category":
-    #             encoder = category_encoder
-    #         elif col == "color":
-    #             encoder = color_encoder
-    #         elif col == "is_premium":
-    #             encoder = is_premium_encoder
-    #         elif col == "gender":
-    #             encoder = gender_encoder
-    #
-    #         df[col] = encoder.transform(df[col])
-    # X = df.to_numpy()
-    # model.fit(X)
     p = model.predict(feed_id)[:5]
     ans = [t[1] for t in p]
     return ans
