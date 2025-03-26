@@ -5,6 +5,7 @@ import numpy as np
 from ProductFeed.models import *
 from sklearn.preprocessing import LabelEncoder
 
+
 class MyRecSystem:
     def __init__(self):
         self.data = None
@@ -126,6 +127,3 @@ def preprocessing(feed_id):
     p = model.predict(feed_id)[:5]
     ans = [t[1] for t in p]
     return ans
-
-
-preprocessing(1)
