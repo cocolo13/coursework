@@ -49,6 +49,8 @@ def create_data_frame(feed_id):
     all_fields.remove("Clothes_size+")
     all_fields.remove("gender")
     all_fields.remove("count_in_stock")
+    all_fields.remove("Baskets_feeds+")
+    all_fields.remove("baskets")
 
     all_seasons = [s.__str__() for s in Seasons.objects.all()]
     all_styles = [s.__str__() for s in Styles.objects.all()]
@@ -64,7 +66,6 @@ def create_data_frame(feed_id):
             else:
                 new_f = f[f.index("_") + 1:]
                 new_f = new_f[:-1]
-
                 all_values = getattr(cl, new_f).all()
                 value = []
                 for elem in all_values:
