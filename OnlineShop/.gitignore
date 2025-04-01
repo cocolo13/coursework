@@ -6,4 +6,4 @@ ProductFeed/migrations
 ../.venv/
 **/__pycache__/
 /migrations/
-../.idea
+.idea/
