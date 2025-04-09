@@ -21,6 +21,7 @@
         <a href="{% url 'clothes'%}" class="cat-button">Одежда</a>
         <a href="{% url 'shoes'%}" class="cat-button">Обувь</a>
         <a href="{% url 'accessories'%}" class="cat-button">Аксессуары</a>
+        <a href="{% url 'premium'%}" class="cat-button">Premium</a>
         <a href="{% url 'male'%}" class="cat-button">Мужчинам</a>
         <a href="{% url 'female'%}" class="cat-button">Женщинам</a>
         <div class="search-button-container">
@@ -32,6 +33,9 @@
         {% if request.user.is_authenticated%}
         <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
         <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
+        <button class="trash_button">
+            <a href="{% url 'trash'%}"><img src="{% static 'ProductFeed/images/trash.png' %}" class="trash-img"></a>
+        </button>
         {% else %}
         <button class="enter-button"><a class="login-link" href="{% url 'login'%}">Войти</a></button>
         <button class="register-button"><a class="login-link" href="{% url 'register'%}">Регистрация</a></button>

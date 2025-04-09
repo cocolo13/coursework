@@ -216,12 +216,13 @@ h4 {
 .main-container {
     display: flex;
     flex-direction: row;
-    gap: 250px;
+    gap: 5px;
 }
 
 .trash-container {
     display: flex;
     flex-direction: column;
+    margin-left: 1px;
 }
 
 .add-in-trash {
@@ -252,4 +253,23 @@ p {
     display: flex;
     flex-direction: column;
     column-gap: 0px
+}
+
+.trash_button {
+    border-radius: 15px;
+    height: 40px;
+    background-color: #edf6f9;
+}
+
+.trash-img {
+    height: 30px;
+}
+
+.delete-feed {
+    background-color: white;
+    color: black;
+    height: 30px;
+    width: 100px;
+    border-radius: 20px;
+    border-color: black;
 }

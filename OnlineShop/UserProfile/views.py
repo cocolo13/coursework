@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from ProductFeed.models import Clothes
 from django.contrib.auth.models import User
-from UserProfile.models import Achievements, UserProfile
+from UserProfile.models import Achievements, UserProfile, Baskets
 
 
 # Create your views here.
@@ -14,8 +14,25 @@ def profile_show(request):
 
 def show_page_trash(request):
     all_clothes = Clothes.objects.all().order_by('-by_count')
+    try:
+        basket = Baskets.objects.get(user=request.user)
+        basket_items = basket.feeds.all()
+    except Exception:
+        basket_items = []
     return render(request, "UserProfile/trash.html",
-                  {"all_title": all_clothes})
+                  {"all_title": all_clothes,
+                   "basket_feeds": basket_items})
+
+
+def remove_from_basket(request):
+    try:
+        if request.method == 'POST':
+            product = Clothes.objects.get(pk=request.POST.get('item_id'))
+            basket = Baskets.objects.get(user=request.user)
+            basket.feeds.remove(product)
+    except Exception:
+        pass
+    return redirect('trash')
 
 
 def show_page_like(request):

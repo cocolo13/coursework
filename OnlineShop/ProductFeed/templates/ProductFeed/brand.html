@@ -30,7 +30,9 @@
         {% if request.user.is_authenticated%}
         <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
         <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
-
+        <button class="trash_button">
+            <a href="{% url 'trash'%}"><img src="{% static 'ProductFeed/images/trash.png' %}" class="trash-img"></a>
+        </button>
         {% else %}
         <button class="enter-button"><a class="login-link" href="#">Войти</a></button>
         <button class="register-button"><a class="login-link" href="#">Регистрация</a></button>

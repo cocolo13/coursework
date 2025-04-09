@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8" >
     <title>OnlineShop</title>
-    
-    <link rel="stylesheet" href="{% static 'UserProfile/css/profile.css' %}">
+
+    <link rel="stylesheet" href="{% static 'ProductFeed/css/clothes.css' %}">
 </head>
 <body>
     <div class="top">
@@ -16,53 +16,52 @@
             </a>
         </h1>
     </div>
-    
     <div class="button-container">
         <a href="{% url 'clothes'%}" class="cat-button">Одежда</a>
         <a href="{% url 'shoes'%}" class="cat-button">Обувь</a>
         <a href="{% url 'accessories'%}" class="cat-button">Аксессуары</a>
-        <a href="" class="cat-button">Мужчинам</a>
-        <a href="" class="cat-button">Женщинам</a>
         <div class="search-button-container">
             <input placeholder="Поиск" class="search-input">
             <button class="lupa-button">
                 <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
             </button>
         </div>
+        {% if request.user.is_authenticated%}
         <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
         <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
         <button class="trash_button">
             <a href="{% url 'trash'%}"><img src="{% static 'ProductFeed/images/trash.png' %}" class="trash-img"></a>
         </button>
+        {% else %}
+        <button class="enter-button"><a class="login-link" href="#">Войти</a></button>
+        <button class="register-button"><a class="login-link" href="#">Регистрация</a></button>
+        {% endif%}
     </div>
-    <div class="main-container">
-        <div class="points-container">
-            <a class="point-links" href="{% url 'myData'%}">Мои данные</a>
-            <a class="point-links" href="{% url 'trash'%}">Корзина</a>
-            <a class="point-links" href="{% url 'like'%}">Избранное</a>
-            <a class="point-links" href="{% url 'achievements'%}">Достижения</a>
-            <a class="point-links" href="{% url 'profile'%}">Заказы</a>
-            <a class="point-links" href="{% url 'reviews'%}">Отзывы</a>
+    <div class="settings-clothes-container">
+        <h2>Premium</h2>
+        <div class="settings-clothes-inside-container">
+            <button class="dropdown">Категории</button>
+            <button class="dropdown">Цена</button>
+            <button class="dropdown">Цвет</button>
+            <button class="dropdown">Сезон</button>
         </div>
-        <div class="orders-container">
-            <h3>Мои заказы</h3>
-            <h3>Список заказов пуст</h3>
-        </div>
+
     </div>
-    <h2>Рекомендуем</h2>
     <div class="clothes-container">
-        {% for obj in all_title %}
+        {% for cl in premium_feeds %}
             <div class="product">
-                <a href="{{obj.get_absolute_url}}"><img class="image-photo" src="{{obj.photo.url}}"></a>
-                {% for b in obj.brand.all %}
+                <a href="{{cl.get_absolute_url}}"><img class="image-photo" src="{{cl.photo.url}}"></a>
+                {% for b in cl.brand.all %}
                 <p>{{ b }}</p>
                 {% endfor %}
-                <p>{{obj.title}}</p>
-                <p>{{obj.cost}}₽</p>
+                <p>{{cl.title}}</p>
+                <p>{{cl.cost}}₽</p>
+                {% if cl.is_premium%}
+                <p><b class="premium">Premium</b></p>
+                {% endif %}
             </div>
         {% endfor %}
     </div>
-    
 </body>
 </html>
 

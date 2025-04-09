@@ -187,11 +187,6 @@ h4 {
     opacity: 0.2;
 }
 
-/* .add-in-trash {
-    border-radius: 80px;
-    background-color: #b0c4b1;
-} */
-
 .product {
     text-align: center; 
     margin: 20px;
@@ -250,7 +245,18 @@ h4 {
     color: black;
 }
 
-.add-in-trash {
+.add-in-trash1 {
+    margin-top: 100;
+    background-color: white;
+    color: black;
+    height: 50px;
+    width: 300px;
+    font-size: large;
+    border-radius: 20px;
+    border-color: black;
+}
+
+.add-in-trash2 {
     margin-top: 100;
     background-color: white;
     color: black;
@@ -275,11 +281,6 @@ h4 {
 .image-photo2 {
     height: 340px;
 }
-.add-in-trash2 {
-    border-radius: 10px;
-    background-color: #b0c4b1;
-    height: 30px;
-}
 
 .product2 {
     text-align: center; 
@@ -299,4 +300,14 @@ p {
     display: flex;
     flex-direction: row;
     gap: 10px;
+}
+
+.trash_button {
+    border-radius: 15px;
+    height: 40px;
+    background-color: #edf6f9;
+}
+
+.trash-img {
+    height: 30px;
 }

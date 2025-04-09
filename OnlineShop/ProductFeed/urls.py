@@ -1,6 +1,7 @@
 from django.urls import path
 from .views import *
 from UserProfile.views import *
+
 urlpatterns = [
     path("", show_base_page, name="feed"),
     path("clothes", show_clothes_page, name="clothes"),
@@ -18,5 +19,7 @@ urlpatterns = [
     path("profile/reviews", show_page_reviews, name="reviews"),
     path("profile/myData", show_page_my_data, name="myData"),
     path("product/<int:product_id>/", show_product_info, name="product"),
-    path("brand/<int:brand_id>/", show_brand, name="brand")
+    path("brand/<int:brand_id>/", show_brand, name="brand"),
+    path("remove_from_basket/", remove_from_basket, name="remove_from_basket"),
+    path("premium/", show_premium_feeds, name="premium")
 ]

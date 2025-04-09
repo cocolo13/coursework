@@ -29,8 +29,16 @@
                 <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
             </button>
         </div>
+        {% if request.user.is_authenticated%}
         <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
         <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
+        <button class="trash_button">
+            <a href="{% url 'trash'%}"><img src="{% static 'ProductFeed/images/trash.png' %}" class="trash-img"></a>
+        </button>
+        {% else %}
+        <button class="enter-button"><a class="login-link" href="{% url 'login'%}">Войти</a></button>
+        <button class="register-button"><a class="login-link" href="{% url 'register'%}">Регистрация</a></button>
+        {% endif%}
     </div>
     <div class="clothes-container">
         {% for pr in product %}
@@ -47,7 +55,20 @@
                 <p>{{s}}</p>
                 {% endfor %}
             </div>
-            <button class="add-in-trash">Добавить в корзину</button>
+            {% if not request.user.is_authenticated%}
+            <p></p>
+            {% else %}
+            {% if pr not in request.user.baskets.feeds.all %}
+            <form method="post" action="{% url 'product' product_id=product.first.pk %}">
+                {% csrf_token %}
+                <button type="submit" class="add-in-trash1">Добавить в корзину</button>
+            </form>
+            {% else %}
+            <button class="trash_button">
+                    <a href="{% url 'trash'%}"><img src="{% static 'ProductFeed/images/trash.png' %}" class="trash-img"></a>
+                </button>
+            {% endif %}
+            {% endif %}
         </div>
         {% endfor%}
     </div>
@@ -65,8 +86,7 @@
                 <p><b class="premium">Premium</b></p>
                 {% endif %}
                 <div class="button-heat-add">
-                    <!-- <button class="add-in-trash2">Добавить в корзину</button> -->
-                </div> 
+                </div>
             </div>
         {% endfor %}
     </div>

@@ -4,11 +4,12 @@ from django.shortcuts import render, redirect
 from rest_framework.reverse import reverse_lazy
 from django.views.generic.edit import CreateView
 from django.contrib.auth import logout
-from .forms import RegisterUserForm, LoginUserForm
+from .forms import RegisterUserForm, LoginUserForm, AddToBasketForm
 from .models import Clothes, Sizes, Brands
 from UserProfile.models import UserProfile, Achievements
 from django.contrib.auth.models import User
 from ML.views import preprocessing
+from UserProfile.models import *
 
 
 def show_base_page(request):
@@ -100,12 +101,26 @@ def show_product_info(request, product_id):
     rec_pk = preprocessing(feed_id=product_id)
     rec = Clothes.objects.filter(pk__in=rec_pk)
     brand = Clothes.objects.get(pk=product_id).brand.all()[0]
+    try:
+        if request.method == 'POST':
+            form = AddToBasketForm(request.POST)
+            if form.is_valid():
+                basket, created = Baskets.objects.get_or_create(user=request.user)
+                product = Clothes.objects.get(pk=product_id)
+                basket.feeds.add(product)
+                return redirect("product", product_id=product_id)
+        else:
+            form = AddToBasketForm()
+    except:
+        pass
+
     return render(request, "ProductFeed/product.html",
                   {"product": current_product,
                    "all_title": all_clothes,
                    "sizes": sizes,
                    "rec_feed": rec,
-                   "brand": brand})
+                   "brand": brand,
+                   "form": form})
 
 
 def show_male_feeds(request):
@@ -131,3 +146,9 @@ def show_brand(request, brand_id):
     return render(request, "ProductFeed/brand.html",
                   {"all_feeds": feeds_clothes,
                    "brand": current_brand})
+
+
+def show_premium_feeds(request):
+    premium_feeds = Clothes.objects.filter(is_premium=True)
+    return render(request, "ProductFeed/premium_feeds.html",
+                  {"premium_feeds": premium_feeds})

@@ -30,3 +30,7 @@ class LoginUserForm(AuthenticationForm):
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(
         attrs={'class': 'input', "placeholder": "Пароль"}
     ))
+
+
+class AddToBasketForm(forms.Form):
+    pass

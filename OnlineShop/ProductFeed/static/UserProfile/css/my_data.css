@@ -360,3 +360,13 @@ p {
 .save-btn :hover{
     opacity: 0.5;
 }
+
+.trash_button {
+    border-radius: 15px;
+    height: 40px;
+    background-color: #edf6f9;
+}
+
+.trash-img {
+    height: 30px;
+}
