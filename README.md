@@ -10,6 +10,3 @@
 * CSS
 * MySQL
 
-### Для запуска
-* pip install -r requirements.txt #установка зависимостей
-* python manage.py runserver #запуск
