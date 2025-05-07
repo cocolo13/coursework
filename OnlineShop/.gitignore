@@ -7,3 +7,4 @@ ProductFeed/migrations
 **/__pycache__/
 /migrations/
 **/.idea/
+.env
