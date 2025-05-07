@@ -256,23 +256,23 @@ p {
 }
 
 .name-container {
-    width: 200px; /* Задайте желаемую ширину поля ввода */
-    margin-bottom: 10px; /* Добавьте отступ снизу */
+    width: 200px;
+    margin-bottom: 10px;
   }
   
 .name-container label {
     display: block;
     margin-bottom: 5px;
-    font-size: 16px; /* Задайте размер шрифта заголовка */
+    font-size: 16px;
   }
   
-.name-container input[type="text"] {
-    width: 100%;
+.name-container input {
+    width: 150%;
     padding: 0;
     border: none;
-    border-bottom: 2px solid black; /* Нижняя линия */
-    outline: none; /* Убирает обводку при фокусировке */
-    font-size: 20px; /* Задайте размер шрифта текста в поле ввода */
+    border-bottom: 2px solid black;
+    outline: none;
+    font-size: 20px;
 }
 
 .radio-group {
@@ -310,25 +310,23 @@ p {
   border-radius: 50%; /* Make it round */
 }
 
-/* When the radio button is checked, add a blue background */
 .radio-container input:checked ~ .checkmark {
-  background-color: #fff; /*White background when checked*/
-  border: 1px solid black; /*Add border around the circle*/
+  background-color: #fff;
+  border: 1px solid black;
 }
 
-/* Create the indicator (the dot inside the circle) */
 .checkmark:after {
   content: "";
   position: absolute;
   display: none;
 }
 
-/* Show the indicator (dot) when checked */
+
 .radio-container input:checked ~ .checkmark:after {
   display: block;
 }
 
-/* Style the indicator (dot) */
+
 .radio-container .checkmark:after {
   top: 5px;
   left: 5px;
@@ -369,4 +367,20 @@ p {
 
 .trash-img {
     height: 30px;
+}
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    color: #3c763d;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.messages {
+    margin-bottom: 20px;
 }

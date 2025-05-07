@@ -20,12 +20,19 @@ class Clothes(models.Model):
     subcategory = models.ManyToManyField("Subcategories")
     country = models.ManyToManyField("Countries")
     brand = models.ManyToManyField("Brands")
+    is_sale = models.BooleanField(null=True, default=False)
+    percent_sale = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title
 
     def get_absolute_url(self):
         return reverse('product', kwargs={'product_id': self.pk})
+
+    def get_discounted_price(self):
+        if self.percent_sale:
+            return self.cost * (100 - self.percent_sale) // 100
+        return self.cost
 
 
 class Sizes(models.Model):

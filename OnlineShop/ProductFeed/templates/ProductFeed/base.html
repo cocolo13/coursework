@@ -24,12 +24,7 @@
         <a href="{% url 'premium'%}" class="cat-button">Premium</a>
         <a href="{% url 'male'%}" class="cat-button">Мужчинам</a>
         <a href="{% url 'female'%}" class="cat-button">Женщинам</a>
-        <div class="search-button-container">
-            <input placeholder="Поиск" class="search-input">
-            <button class="lupa-button">
-                <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
-            </button>
-        </div>
+        <a href="{% url 'sale'%}" class="cat-button">Распродажа</a>
         {% if request.user.is_authenticated%}
         <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
         <button class="register-button"><a class="login-link" href="{% url 'logout'%}">Выйти</a></button>
@@ -71,7 +66,6 @@
                 {% if cl.is_premium%}
                 <p><b class="premium">Premium</b></p>
                 {% endif %}
-                <!-- <button class="add-in-trash">Добавить в корзину</button> -->
             </div>
         {% endfor %}
     </div>
@@ -88,7 +82,6 @@
                 {% if sh.is_premium%}
                 <p><b class="premium">Premium</b></p>
                 {% endif %}
-                <!-- <button class="add-in-trash">Добавить в корзину</button> -->
             </div>
         {% endfor %}
     </div>

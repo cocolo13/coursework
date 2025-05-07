@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from ProductFeed.models import Clothes
 from django.contrib.auth.models import User
 from UserProfile.models import Achievements, UserProfile, Baskets
-
-
+from .forms import *
+from django.contrib import messages
 # Create your views here.
 
 
@@ -14,6 +14,7 @@ def profile_show(request):
 
 def show_page_trash(request):
     all_clothes = Clothes.objects.all().order_by('-by_count')
+    print(request.user)
     try:
         basket = Baskets.objects.get(user=request.user)
         basket_items = basket.feeds.all()
@@ -55,4 +56,15 @@ def show_page_reviews(request):
 
 
 def show_page_my_data(request):
-    return render(request, "UserProfile/myData.html")
+    profile = request.user.userprofile
+
+    if request.method == 'POST':
+        form = UserProfileForm(request.POST, instance=profile)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Данные успешно сохранены!')
+            return redirect('myData')
+    else:
+        form = UserProfileForm(instance=profile)
+
+    return render(request, "UserProfile/myData.html", {'form': form})

@@ -21,5 +21,6 @@ urlpatterns = [
     path("product/<int:product_id>/", show_product_info, name="product"),
     path("brand/<int:brand_id>/", show_brand, name="brand"),
     path("remove_from_basket/", remove_from_basket, name="remove_from_basket"),
-    path("premium/", show_premium_feeds, name="premium")
+    path("premium/", show_premium_feeds, name="premium"),
+    path("sale/", show_page_sale, name="sale")
 ]

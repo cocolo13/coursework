@@ -22,6 +22,10 @@ class UserProfile(models.Model):
     def __str__(self):
         return self.user.last_name
 
+    @property
+    def email(self):
+        return self.user.email
+
 
 class Baskets(models.Model):
     user = models.OneToOneField(User, on_delete=CASCADE)

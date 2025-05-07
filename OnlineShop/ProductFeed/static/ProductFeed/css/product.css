@@ -160,12 +160,13 @@ h4 {
     color: black;
    }
 
-.button-container {
+   .button-container {
     display: flex;
     justify-content: right;
-    gap: 20px; 
+    gap: 16px; 
     overflow: hidden;
-    max-width: 1440px;
+    max-width: 1450px;
+    margin-left: 170px;
 }
 
 .image-photo {

@@ -22,10 +22,12 @@
         <a href="{% url 'shoes'%}" class="cat-button">Обувь</a>
         <a href="{% url 'accessories'%}" class="cat-button">Аксессуары</a>
         <div class="search-button-container">
-            <input placeholder="Поиск" class="search-input">
-            <button class="lupa-button">
-                <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px">
-            </button>
+            <form method="get" action="" class="search-button-container">
+                <input type="text" name="q" placeholder="Поиск" class="search-input" value="{{ request.GET.q }}">
+                <button type="submit" class="lupa-button">
+                    <img src="{% static 'ProductFeed/images/lupa.png' %}" height="40px" alt="Поиск">
+                </button>
+            </form>
         </div>
         {% if request.user.is_authenticated%}
         <button class="register-button"><a class="login-link" href="{% url 'profile'%}">Профиль</a></button>
@@ -39,13 +41,37 @@
         {% endif%}
     </div>
     <div class="settings-clothes-container">
-        
         <h2>{{brand}}</h2>
-        <div class="settings-clothes-inside-container">
-            <button class="dropdown">Категории</button>
-            <button class="dropdown">Цена</button> 
-            <button class="dropdown">Цвет</button>
-            <button class="dropdown">Сезон</button>
+        <div class="price-filter-container">
+            <form method="get" action="">
+                <div class="filter-group">
+                    <label class="dropdown-label" tabindex="0">Цена</label>
+                    <div class="price-filter-dropdown">
+                        <div class="price-inputs">
+                            <input type="number" name="min_price" placeholder="От" value="{{ current_min }}">
+                            <input type="number" name="max_price" placeholder="До" value="{{ current_max }}">
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-group">
+                    <label class="dropdown-label" tabindex="0">Цвет</label>
+                    <div class="color-filter-dropdown">
+                        <div class="color-options">
+                            {% for color in available_colors %}
+                                <div class="color-option">
+                                    <input type="checkbox" name="color" value="{{ color }}" id="color_{{ forloop.counter }}"
+                                           {% if color in selected_colors %}checked{% endif %}>
+                                    <label for="color_{{ forloop.counter }}">{{ color }}</label>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                <div class="filter-buttons">
+                    <button type="submit" class="apply-filter">Применить фильтры</button>
+                    <a href="?" class="reset-filter">Сбросить все</a>
+                </div>
+            </form>
         </div>
     </div>
     <div class="clothes-container">
